@@ -1,28 +1,56 @@
 <?php
 namespace YoastSeoForTypo3\YoastSeo\Backend;
 
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use TYPO3\CMS;
 
+/**
+ * Class PageLayoutHeader
+ *
+ * Add some bootstrapping markup to the page layout module
+ *
+ * @package YoastSeoForTypo3\YoastSeo\Backend
+ */
 class PageLayoutHeader
 {
 
     /**
+     * The field used to store the focus keyword which is used as a part of the content analysis
+     *
      * @var string
      */
     const COLUMN_NAME = 'tx_yoastseo_focuskeyword';
 
     /**
+     * The page type number used to fetch the preview XML using TSFE
+     *
      * @var int
      */
     const FE_PREVIEW_TYPE = 1480321830;
 
     /**
+     * Path were translations are stored, include the file using the locale
+     * found depending on the settings of the current backend user
+     *
      * @var string
      */
     const APP_TRANSLATION_FILE_PATTERN = 'EXT:yoast_seo/Resources/Private/Language/wordpress-seo-%s.json';
 
     /**
+     * Format of configuration array from `ext_localconf.php`
+     *
      * @var array
      */
     protected $configuration = array(
@@ -33,17 +61,21 @@ class PageLayoutHeader
     );
 
     /**
+     * Used to find locale dependencies configured for the CMS interface
+     *
      * @var CMS\Core\Localization\Locales
      */
     protected $localeService;
 
     /**
+     * Page renderer object used to register JS modules, stylesheets etc.
+     *
      * @var CMS\Core\Page\PageRenderer
      */
     protected $pageRenderer;
 
     /**
-     * Initialize the page renderer
+     * Initialize the page renderer, locale service and configuration
      */
     public function __construct()
     {
@@ -58,6 +90,8 @@ class PageLayoutHeader
     }
 
     /**
+     * Render markup to bootstrap the JS module and register our own custom stylesheet
+     *
      * @return string
      */
     public function render()
