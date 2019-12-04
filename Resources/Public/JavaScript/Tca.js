@@ -161,7 +161,7 @@ define(['jquery', './bundle', 'TYPO3/CMS/Backend/AjaxDataHandler', 'TYPO3/CMS/Ba
                         translations: (window.tx_yoast_seo !== undefined && window.tx_yoast_seo !== null && window.tx_yoast_seo.translations !== undefined ? window.tx_yoast_seo.translations : null)
                     });
 
-                    if (typeof $cornerstoneFieldSelector !== undefined && $cornerstoneFieldSelector !== '') {
+                    if (typeof $cornerstoneFieldSelector !== 'undefined' && $cornerstoneFieldSelector !== '') {
                         var cornerstoneField = $('*[name="' + $cornerstoneFieldSelector + '"]');
                         if (cornerstoneField.val() == 1) {
                             apps[0].switchAssessors(true);
